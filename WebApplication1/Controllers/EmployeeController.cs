@@ -23,6 +23,7 @@ namespace WebApplication1.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(EmployeeModel emp)
         {
             if(ModelState.IsValid)

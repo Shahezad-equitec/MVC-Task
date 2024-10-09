@@ -10,7 +10,7 @@ namespace WebApplication1.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage ="Name is Required")]
-        public string Name { get; set; }
+        public string names { get; set; }
         [Required(ErrorMessage ="Designation is Required")]
         public string Designation {  get; set; }
         [Required(ErrorMessage = "Email is Required")]

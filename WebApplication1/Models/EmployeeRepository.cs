@@ -33,7 +33,7 @@ namespace WebApplication1.Models
             {
                 con.Open();
                 DynamicParameters param = new DynamicParameters();
-                param.Add("@name", emp.Name);
+                param.Add("@name", emp.names);
                 param.Add("@designation", emp.Designation);
                 param.Add("@email",emp.Email);
                 param.Add("@phone",emp.Phone);
@@ -47,9 +47,10 @@ namespace WebApplication1.Models
             using (IDbConnection con = Connection)
             {
                 con.Open();
-                DynamicParameters param=new DynamicParameters();
-                param.Add("@id", id);
-                return con.Query<EmployeeModel>("sp_GetEmp_ById",param,commandType:CommandType.StoredProcedure).SingleOrDefault(); 
+                //DynamicParameters param = new DynamicParameters();
+                //param.Add("@id", id);
+
+                return con.Query<EmployeeModel>("sp_GetEmp_ById", new {@id=id}, commandType:CommandType.StoredProcedure).SingleOrDefault(); 
             }
         }
         public int EditEmp(EmployeeModel emp)
@@ -59,7 +60,7 @@ namespace WebApplication1.Models
                 con.Open();
                 DynamicParameters param=new DynamicParameters();
                 param.Add("@id",emp.Id);
-                param.Add("@name", emp.Name);
+                param.Add("@name", emp.names);
                 param.Add("@designation", emp.Designation);
                 param.Add("@email", emp.Email);
                 param.Add("@phone", emp.Phone);
